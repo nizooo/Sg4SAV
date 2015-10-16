@@ -11,7 +11,7 @@ import mk.sav.entity.CustomerRepository;
 import mk.sav.entity.JdbcCustomerRepository;
 
 @Configuration
-@Import(AppConfigStub.class)
+@Import({AppConfigStub.class,AppConfigJdbc.class})
 public class AppConfig {
 
 	@Autowired
