@@ -8,7 +8,7 @@ import mk.sav.internal.CustomerManager;
 import mk.sav.internal.StubCustomerManager;
 
 @Configuration
-@Profile({"Stub"})
+@Profile({"stub"})
 public class AppConfigStub {
 	
 	

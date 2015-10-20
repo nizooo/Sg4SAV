@@ -1,20 +1,40 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
-<head>
-<title>Spring MVC Tutorial by Crunchify - Hello World Spring MVC
-	Example</title>
-<style type="text/css">
-body {
-	background-image: url('http://crunchify.com/bg.png');
-}
-</style>
-</head>
-<body>${message}
- 
-	<br>
-	<br>
-	<div style="font-family: verdana; padding: 10px; border-radius: 10px; font-size: 12px; text-align:center;">
- 
-		Sg test 
-	</div>
-</body>
+    <head>
+    </head>
+    <body>
+        <h3>Welcome, Enter The Employee Details</h3>
+        <form:form method="POST" action="/Sg4SAV/sav/addCustomer" commandName="customer">
+             <table>
+                <tr>
+<%--                     <td><form:label path="name">Name</form:label></td> --%>
+                    <td><form:input path="name"/></td>
+                </tr>
+ <tr>
+                    <td><form:label path="age">Name</form:label></td>
+                    <td><form:input path="age"/></td>
+                </tr>
+ <tr>
+                    <td><form:label path="address">Name</form:label></td>
+                    <td><form:input path="address"/></td>
+                </tr>
+ <tr>
+                    <td><form:label path="email">Name</form:label></td>
+                    <td><form:input path="email"/></td>
+                </tr>
+
+<!--                 <tr> -->
+<%--                     <td><form:label path="age">age</form:label></td> --%>
+<%--                     <td><form:input path="age"/></td> --%>
+<!--                 </tr> -->
+<!--                 <tr> -->
+<%--                     <td><form:label path="address">Contact Number</form:label></td> --%>
+<%--                     <td><form:input path="address"/></td> --%>
+<!--                 </tr> -->
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
 </html>

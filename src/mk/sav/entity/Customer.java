@@ -6,20 +6,18 @@ public class Customer {
 	private String age;
 	private String address;
 	private String email;
+	private Frequency newsletterFrequency;
+	private Gendre gender;
+	private Boolean receiveNewsletter;
 	
 	
 	
-	
-	
-	public Customer(String name, String age, String address, String email) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.address = address;
-		this.email = email;
-	}
+
+	public enum Gendre {MALE, FEMALE} 
 
 
+
+	public enum Frequency{HOURLY, DAILY, WEEKLY, MONTHLY, ANNUALLY}
 
 	public String getName() {
 		return name;
@@ -51,6 +49,30 @@ public class Customer {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Frequency getNewsletterFrequency() {
+		return newsletterFrequency;
+	}
+
+	public void setNewsletterFrequency(Frequency newsletterFrequency) {
+		this.newsletterFrequency = newsletterFrequency;
+	}
+
+	public Gendre getGender() {
+		return gender;
+	}
+
+	public void setGender(Gendre gender) {
+		this.gender = gender;
+	}
+
+	public Boolean getReceiveNewsletter() {
+		return receiveNewsletter;
+	}
+
+	public void setReceiveNewsletter(Boolean receiveNewsletter) {
+		this.receiveNewsletter = receiveNewsletter;
 	}
 	
 	
