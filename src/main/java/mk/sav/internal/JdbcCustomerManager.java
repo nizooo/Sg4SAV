@@ -7,15 +7,19 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import mk.sav.entity.Customer;
+
 public class JdbcCustomerManager implements CustomerManager {
 
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
+	private static Logger LOGGER =  Logger.getLogger(JdbcCustomerManager.class);
+	
 	public JdbcCustomerManager() {
 
-		Logger.getLogger(getClass()).info("Created JdbcCustomerManager");
+		
 	}
 
 	@Override
@@ -32,6 +36,14 @@ public class JdbcCustomerManager implements CustomerManager {
 		}
 		return signleName;
 				
+	}
+
+	@Override
+	public boolean addCustomer(Customer customer) {
+		LOGGER.debug("into addCustomer");
+
+		
+		return false;
 	}
 	
 	

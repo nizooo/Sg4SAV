@@ -12,8 +12,10 @@
 	</appender>
 
 	<!-- Application logger -->
-	<logger name="accounts">
-		<level value="info" />
+
+	
+	<logger name="mk.sav">
+		<level value="debug"/>
 	</logger>
 
 	<!-- 3rdparty Loggers -->

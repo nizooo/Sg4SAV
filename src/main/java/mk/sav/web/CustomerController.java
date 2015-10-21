@@ -47,10 +47,12 @@ public class CustomerController {
 	@RequestMapping(value ="/addCustomer", method=RequestMethod.POST)
 	public String addCustomers(@ModelAttribute("customer") Customer customer, Model model){
 		
+		customerManager.addCustomer(customer);
+		
 		model.addAttribute("name", customer.getName());
-//		model.addAttribute("address", customer.getAddress());
-//		model.addAttribute("age", customer.getAge());
-//		model.addAttribute("msg", "ajout avec succe");
+		model.addAttribute("address", customer.getAddress());
+		model.addAttribute("age", customer.getAge());
+		model.addAttribute("email", customer.getEmail());
 //			
 		
 		//model.addAttribute("name", customer.getName());

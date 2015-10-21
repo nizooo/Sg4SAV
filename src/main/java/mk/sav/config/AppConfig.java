@@ -14,7 +14,7 @@ import mk.sav.entity.CustomerRepository;
 import mk.sav.entity.JdbcCustomerRepository;
 
 @Configuration
-@ComponentScan("mk.sav")
+@ComponentScan("mk.sav.web")
 @Import({AppConfigStub.class,AppConfigJdbc.class})
 public class AppConfig {
 
