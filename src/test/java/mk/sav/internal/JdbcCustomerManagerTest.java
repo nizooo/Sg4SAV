@@ -1,12 +1,15 @@
 package mk.sav.internal;
 
-import org.junit.Assert;
+import org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
+import  static org.junit.Assert.*;
+
+import org.junit.Ignore;
 
 import mk.sav.entity.Customer;
 
@@ -21,9 +24,16 @@ public class JdbcCustomerManagerTest {
 	private Customer customer;
 
 	@Test
-	public void testAddCustomer() throws Exception {
-		 
-	 Assert.assertTrue(jdbcCustomerManager.addCustomer(customer)); 
+	public void testGetCustomerName(){
+		System.out.println("first name = "+jdbcCustomerManager.getCustomerName());
+		//assertEquals("moghzel",jdbcCustomerManager.getCustomerName());
+		
 	}
+	
+//	@Ignore
+//	public void testAddCustomer() throws Exception {
+//		 
+//	 assertTrue(jdbcCustomerManager.addCustomer(customer)); 
+//	}
 
 }

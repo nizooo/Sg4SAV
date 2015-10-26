@@ -2,25 +2,68 @@ package mk.sav.config;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.core.io.Resource;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 @Configuration
 public class DbConfig {
+
+    @Value("classpath:mk/sav/testdb/schema.sql")
+	private Resource schemaScript;
+    @Value("classpath:mk/sav/testdb/test-data.sql")
+	private Resource dataScript;
 
 	/**
 	 * Creates an in-memory  "rewards" database populated with
 	 * test data for fast testing
 	 */
 	
+//	@Bean
+//	public DataSource dataSource(){
+//		
+//		return (new EmbeddedDatabaseBuilder())
+//				.setName("db_sav_NIZAR")
+//				.addScript("classpath:mk/sav/testdb/schema.sql")
+//				.addScript("classpath:mk/sav/testdb/test-data.sql")
+//				.build();
+//	}
+	
 	@Bean
 	public DataSource dataSource(){
 		
-		return (new EmbeddedDatabaseBuilder())
-				.addScript("classpath:mk/sav/testdb/schema.sql")
-				.addScript("classpath:mk/sav/testdb/test-data.sql")
-				.build();
+		BasicDataSource ds = new BasicDataSource();
+		ds.setDriverClassName("org.postgresql.Driver");
+		ds.setUrl("jdbc:postgresql://localhost/postgres");
+		ds.setUsername("postgres");
+		ds.setPassword("Gh05t82++");
+		return ds;
+		
+	}
+	
+	@Bean
+	public DataSourceInitializer dataSourceInitializer(final DataSource dataSource){
+		
+		final DataSourceInitializer initializer = new DataSourceInitializer();
+		initializer.setDataSource(dataSource);
+		initializer.setDatabasePopulator(databasePopulator());
+		
+		return initializer;
+		
+	}
+
+	private DatabasePopulator databasePopulator() {
+		
+		final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+		populator.addScript(schemaScript);
+		populator.addScript(dataScript);
+		
+		return populator;
 	}
 	
 }
