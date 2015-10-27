@@ -9,16 +9,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import mk.sav.entity.Customer;
 
+
 public class JdbcCustomerManager implements CustomerManager {
 
 
-	@Autowired
+
 	JdbcTemplate jdbcTemplate;
 	
 	private static Logger LOGGER =  Logger.getLogger(JdbcCustomerManager.class);
 	
-	public JdbcCustomerManager() {
-
+	@Autowired
+	public JdbcCustomerManager(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	
 	}
 
@@ -41,12 +43,12 @@ public class JdbcCustomerManager implements CustomerManager {
 	@Override
 	public boolean addCustomer(Customer customer) {
 		LOGGER.debug("into addCustomer");
-		//jdbcTemplate.up
-		jdbcTemplate.execute("drop table if exists T_CUSTOMER ");
-        jdbcTemplate.execute("create table T_CUSTOMER(ID SERIAL primary key,NUMBER varchar(9), NAME varchar(50) not null )");
-        jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('454544', 'AHMED')");
-		jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('959598', 'NIZAR')");
-		jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('896548', 'MOGHZEL')");
+//		jdbcTemplate.up
+//		jdbcTemplate.execute("drop table if exists T_CUSTOMER ");
+//      jdbcTemplate.execute("create table T_CUSTOMER(ID SERIAL primary key,NUMBER varchar(9), NAME varchar(50) not null )");
+//      jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('454544', 'AHMED')");
+//		jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('959598', 'NIZAR')");
+//		jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('896548', 'MOGHZEL')");
 		return false;
 	}
 	

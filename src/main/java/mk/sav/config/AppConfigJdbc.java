@@ -29,7 +29,7 @@ public class AppConfigJdbc {
 
 	@Bean
 	public CustomerManager customerManager(){
-		return new JdbcCustomerManager();
+		return new JdbcCustomerManager(jdbcTemplate());
 		
 		
 	}
