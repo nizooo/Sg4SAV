@@ -35,6 +35,10 @@
       <form:input path="age" id="ageInput" />
       <br/>
 
+	  <label for="addressInput">Address: </label>
+      <form:input path="address" id="emailInput" />
+      <br/>
+
       <label for="emailInput">Email: </label>
       <form:input path="email" id="emailInput" />
       <br/>

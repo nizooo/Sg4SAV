@@ -1,4 +1,3 @@
-insert into T_CUSTOMER (NUMBER, NAME) values ('454544', 'AHMED');
-insert into T_CUSTOMER (NUMBER, NAME) values ('959598', 'NIZAR');
-insert into T_CUSTOMER (NUMBER, NAME) values ('896548', 'MOGHZEL');
-insert into T_CUSTOMER (NUMBER, NAME) values ('111111', 'RAMI');
+insert into T_CUSTOMER (NAME, AGE, ADDRESS, EMAIL, FREQUENCY_NEWS, GENDER, RECEIVE_NEWSLETTER) 
+values                 ('Testprod', '100', 'rue 97 toto', 'email@test.com', 'HOURLY', 'MALE', true);
+

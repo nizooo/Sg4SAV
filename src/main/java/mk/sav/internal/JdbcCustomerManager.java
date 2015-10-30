@@ -1,13 +1,17 @@
 package mk.sav.internal;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import mk.sav.entity.Customer;
+import mk.sav.entity.Customer.Gender;
 
 
 public class JdbcCustomerManager implements CustomerManager {
@@ -15,42 +19,77 @@ public class JdbcCustomerManager implements CustomerManager {
 
 
 	JdbcTemplate jdbcTemplate;
-	
+
 	private static Logger LOGGER =  Logger.getLogger(JdbcCustomerManager.class);
-	
+
 	@Autowired
 	public JdbcCustomerManager(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
-	
+
 	}
 
 	@Override
 	public String getCustomerName() {
-		
+
 		String sql = "select NAME from T_CUSTOMER";
 		//return jdbcTemplate.queryForObject(sql ,String.class);
-		
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
 		String signleName = null;
 		for (Map row : rows) {
-			
+
 			signleName = (String) row.get("NAME");
 		}
 		return signleName;
-				
+
 	}
 
 	@Override
-	public boolean addCustomer(Customer customer) {
+	public int addCustomer(Customer customer) {
 		LOGGER.debug("into addCustomer");
-//		jdbcTemplate.up
-//		jdbcTemplate.execute("drop table if exists T_CUSTOMER ");
-//      jdbcTemplate.execute("create table T_CUSTOMER(ID SERIAL primary key,NUMBER varchar(9), NAME varchar(50) not null )");
-//      jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('454544', 'AHMED')");
-//		jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('959598', 'NIZAR')");
-//		jdbcTemplate.execute("insert into T_CUSTOMER (NUMBER, NAME) values ('896548', 'MOGHZEL')");
-		return false;
+		String sql = "insert into T_CUSTOMER(NAME, AGE, ADDRESS, EMAIL, FREQUENCY_NEWS, GENDER, RECEIVE_NEWSLETTER) values (?,?,?,?,?,?,?) ";
+		int retour = jdbcTemplate.update(sql,
+				customer.getName(),
+				customer.getAge(),
+				customer.getAddress(),
+				customer.getEmail(),
+				customer.getNewsletterFrequency().toString(),
+				customer.getGender().toString(),
+				customer.getReceiveNewsletter());
+
+		LOGGER.info("insertion effectuée avec succès ="+retour);
+		return retour;
 	}
-	
-	
+
+	public List<Customer> getListCustomers() {
+
+		String sql ="select * from T_CUSTOMER";
+		
+		List<Customer> listCustomers = jdbcTemplate.query(sql, new CustomersMapper());
+		for (Customer customer : listCustomers) {
+			LOGGER.info("customer name ="+customer.getName());
+		}
+		
+		return listCustomers;
+
+		//return null;
+
+	}
+
+
+	class CustomersMapper implements RowMapper<Customer> {
+		
+		@Override
+		public Customer mapRow(ResultSet rs, int i) throws SQLException {
+			Customer customer = new Customer();
+			customer.setName(rs.getString("NAME"));
+			customer.setAge(rs.getString("AGE"));
+			customer.setAddress(rs.getString("ADDRESS"));
+			customer.setEmail(rs.getString("EMAIL"));
+			customer.setGender(Gender.valueOf(rs.getString("GENDER")));
+			//customer.set
+			return customer;
+		}}
+
+
+
 }
