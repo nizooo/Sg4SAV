@@ -17,7 +17,6 @@ public class StubCustomerManager implements CustomerManager {
 	}
 
 
-	@Override
 	public List<Customer> getListCustomers() {
 		// TODO Auto-generated method stub
 		return null;

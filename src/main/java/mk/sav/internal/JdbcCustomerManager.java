@@ -9,15 +9,16 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import mk.sav.entity.Customer;
 import mk.sav.entity.Customer.Gender;
 
-
+@Component
 public class JdbcCustomerManager implements CustomerManager {
 
 
-
+	//@Autowired
 	JdbcTemplate jdbcTemplate;
 
 	private static Logger LOGGER =  Logger.getLogger(JdbcCustomerManager.class);
@@ -28,7 +29,6 @@ public class JdbcCustomerManager implements CustomerManager {
 
 	}
 
-	@Override
 	public String getCustomerName() {
 
 		String sql = "select NAME from T_CUSTOMER";
@@ -43,7 +43,7 @@ public class JdbcCustomerManager implements CustomerManager {
 
 	}
 
-	@Override
+
 	public int addCustomer(Customer customer) {
 		LOGGER.debug("into addCustomer");
 		String sql = "insert into T_CUSTOMER(NAME, AGE, ADDRESS, EMAIL, FREQUENCY_NEWS, GENDER, RECEIVE_NEWSLETTER) values (?,?,?,?,?,?,?) ";
@@ -78,7 +78,6 @@ public class JdbcCustomerManager implements CustomerManager {
 
 	class CustomersMapper implements RowMapper<Customer> {
 		
-		@Override
 		public Customer mapRow(ResultSet rs, int i) throws SQLException {
 			Customer customer = new Customer();
 			customer.setName(rs.getString("NAME"));

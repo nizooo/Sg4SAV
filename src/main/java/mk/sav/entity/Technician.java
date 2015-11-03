@@ -1,13 +1,30 @@
 package mk.sav.entity;
 
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="T_TECHNICIAN")
 public class Technician {
 
+	
+	private long id;
 	private String name;
 	private String age;
-	private String address;
+	@OneToMany
+	@JoinColumn(name="cid")
+	private Set<Address> address;
 	private String email;
 
-	public Technician(String name, String age, String address, String email) {
+	public Technician(String name, String age, Set<Address> address, String email) {
 		super();
 		this.name = name;
 		this.age = age;
@@ -15,6 +32,17 @@ public class Technician {
 		this.email = email;
 	}
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="tech_id")
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -31,13 +59,7 @@ public class Technician {
 		this.age = age;
 	}
 
-	public String getAddress() {
-		return address;
-	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
 	public String getEmail() {
 		return email;
@@ -47,4 +69,7 @@ public class Technician {
 		this.email = email;
 	}
 
+
+
+	
 }

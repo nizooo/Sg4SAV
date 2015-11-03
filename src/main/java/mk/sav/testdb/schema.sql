@@ -9,3 +9,5 @@ FREQUENCY_NEWS varchar(15),
 GENDER varchar(15),
 RECEIVE_NEWSLETTER boolean
 );
+drop table if exists T_ADDRESS;
+drop table if exists T_TECHNICIAN;

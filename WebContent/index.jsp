@@ -14,9 +14,6 @@ body {
 			test index.<br> <br>
 		</h2>
 		<h3>
-			<a href="/Sg4SAV/sav/welcome.html">Click here to See Welcome Message... </a>
-		</h3>
-		<h3>
 			<a href="/Sg4SAV/sav/addCustomer">Click here to add Customer... </a>
 		</h3>
 		<h3>

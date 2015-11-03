@@ -25,7 +25,7 @@
 
     <h2>list cust</h2>
     <c:if test="${not empty message}"><div class="message green">${message}</div></c:if>
-	<table>
+	<table border="1">
 	<tr><th>Name</th><th>Age</th><th>Email</th><th>News Frequency</th><th>Gender</th><th>Receive News</th>
         <c:forEach items="${listCustomers}" var="customer">
 	     <tr> 

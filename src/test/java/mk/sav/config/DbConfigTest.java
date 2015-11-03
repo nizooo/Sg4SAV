@@ -13,18 +13,28 @@ import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 @Configuration
-@Profile("prod")
-public class DbConfig {
+@Profile("test")
+public class DbConfigTest {
 
-    @Value("classpath:mk/sav/testdb/schema.sql")
+	@Value("classpath:schema.sql")
 	private Resource schemaScript;
-    @Value("classpath:mk/sav/testdb/test-data.sql")
+	 @Value("classpath:test-data.sql")
 	private Resource dataScript;
 
 	/**
 	 * Creates an in-memory  "rewards" database populated with
 	 * test data for fast testing
 	 */
+	
+//	@Bean
+//	public DataSource dataSource(){
+//		
+//		return (new EmbeddedDatabaseBuilder())
+//				.setName("db_sav_NIZAR")
+//				.addScript("classpath:mk/sav/testdb/schema.sql")
+//				.addScript("classpath:mk/sav/testdb/test-data.sql")
+//				.build();
+//	}
 	
 	@Bean
 	public DataSource dataSource(){
