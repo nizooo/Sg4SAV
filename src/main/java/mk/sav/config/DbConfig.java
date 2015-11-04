@@ -33,7 +33,7 @@ public class DbConfig {
 		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setUrl("jdbc:postgresql://localhost/postgres");
 		ds.setUsername("postgres");
-		ds.setPassword("Gh05t82++");
+		ds.setPassword("postgresql");
 		return ds;
 		
 	}

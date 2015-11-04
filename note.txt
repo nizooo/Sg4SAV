@@ -1,0 +1,8 @@
+# Prod database
+CREATE USER nizar WITH PASSWORD 'nizar_password';
+GRANT ALL PRIVILEGES ON DATABASE "postgres" to nizar;
+
+
+# Test database
+CREATE USER nizar_test WITH PASSWORD 'test_password';
+GRANT ALL PRIVILEGES ON DATABASE "postgres_test" to nizar_test;

@@ -45,8 +45,8 @@ public class JpaTechnicianRepositoryTest {
 		address1.setStreet("Noterdam");
 		
 		Address address2 = new Address();
-		address2.setCity("NewYork");
-		address2.setStreet("Noterdam");
+		address2.setCity("Los Angels");
+		address2.setStreet("waterfall");
 		
 		Set<Address> listAdress = new HashSet<>();
 		listAdress.add(address1);

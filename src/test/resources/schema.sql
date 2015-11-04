@@ -1,3 +1,5 @@
+TRUNCATE table T_TECHNICIAN CASCADE;
+
 drop table if exists T_CUSTOMER;
 create table T_CUSTOMER(
 ID serial primary key,

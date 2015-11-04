@@ -2,6 +2,7 @@ package mk.sav.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +20,6 @@ public class Technician {
 	private long id;
 	private String name;
 	private String age;
-	@OneToMany
-	@JoinColumn(name="cid")
 	private Set<Address> address;
 	private String email;
 
@@ -37,6 +36,16 @@ public class Technician {
 	@Column(name="tech_id")
 	public long getId() {
 		return id;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="cid")
+	public Set<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(Set<Address> address) {
+		this.address = address;
 	}
 
 	public void setId(long id) {
@@ -70,6 +79,9 @@ public class Technician {
 	}
 
 
+
+
+	
 
 	
 }

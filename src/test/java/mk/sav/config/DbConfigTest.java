@@ -41,9 +41,9 @@ public class DbConfigTest {
 		
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("org.postgresql.Driver");
-		ds.setUrl("jdbc:postgresql://localhost/postgres");
+		ds.setUrl("jdbc:postgresql://localhost/postgres_test");
 		ds.setUsername("postgres");
-		ds.setPassword("Gh05t82++");
+		ds.setPassword("postgresql");
 		return ds;
 		
 	}
