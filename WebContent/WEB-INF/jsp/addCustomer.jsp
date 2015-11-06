@@ -3,7 +3,7 @@
  
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -20,7 +20,8 @@
     </style>
   </head>
   <body>
- 
+  You are logged in as:
+ <security:authentication property="principal.username" />
  <div id="container">
 
     <h2>Subscribe to The Newsletter!</h2>

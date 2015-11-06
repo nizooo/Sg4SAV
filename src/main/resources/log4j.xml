@@ -42,6 +42,18 @@
 	<logger name="org.springframework.webflow">
 		<level value="debug" />
 	</logger>
+	
+	<logger name="org.springframework.security">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+		<level value="debug" />
+	</logger>
+	
+	<logger name="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+		<level value="debug" />
+	</logger>
 
 	<!-- Root Logger -->
 	<root>
