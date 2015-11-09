@@ -7,7 +7,8 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @ComponentScan("mk.sav")
-@Import({AppConfig.class,DbConfigTest.class})
+@Import({AppConfig.class,DbConfigTest.class/*,MvcConfig.class*/})
+//@ImportResource("classpath:/mk/sav/config/security-config.xml")
 @Profile("jdbc")
 public class TestInfrastructureDevConfig {
 

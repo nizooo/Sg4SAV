@@ -11,9 +11,9 @@
 						http://www.springframework.org/schema/security/spring-security.xsd">
  
 <!-- 	<context:component-scan base-package="mk.sav.web" /> -->
-	<security:http access-denied-page="/denied.jsp"  use-expressions="true">
+	<security:http     use-expressions="true">
 	
-		<security:form-login login-page="/login.jsp" authentication-failure-url="/login?login_error=true" />
+		<security:form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=true" />
 		<security:intercept-url pattern="/sav/add*" access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/sav/list*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
 <!-- 		<security:intercept-url pattern="/sav/add*" access="IS_AUTHENTICATED_FULLY" /> -->
@@ -26,24 +26,8 @@
 <!-- 			<security:password-encoder hash="sha-256" > -->
 <!-- 				<security:salt-source system-wide="MySalt" /> -->
 <!-- 			</security:password-encoder> -->
-			<security:user-service properties="/WEB-INF/users.properties" />
+			<security:user-service properties="/users.properties" />
  		</security:authentication-provider>
 	</security:authentication-manager>
-<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" > -->
-<!-- 		<property name="driverClassName" value="${jdbc.driverClassName}"></property> -->
-<!-- 		<property name="url" value="${jdbc.url}" /> -->
-<!-- 		<property name="username" value="${jdbc.username}" /> -->
-<!-- 		<property name="password" value="${jdbc.password}" /> -->
-		
-<!-- 	</bean> -->
- 
-<!--  	<context:property-placeholder location="classpath:jdbc.properties" /> -->
- 	
-<!-- 	<bean id="viewResolver" -->
-<!-- 		class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
-<!-- 		<property name="viewClass" -->
-<!-- 			value="org.springframework.web.servlet.view.JstlView" /> -->
-<!-- 		<property name="prefix" value="/WEB-INF/jsp/" /> -->
-<!-- 		<property name="suffix" value=".jsp" /> -->
-<!-- 	</bean> -->
+
 </beans>
