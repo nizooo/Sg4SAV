@@ -68,6 +68,15 @@
       <input type="submit" value="Submit" />
     </form:form>
   </div>
-  
+  	<h3>
+			<!--  Don't show logout unless someone is logged in -->
+			<security:authentication property="principal" var="principal" scope="page" />
+			<c:if test="${principal != null}">
+				<p>
+					<a href="<c:url value="/j_spring_security_logout"/>">Logout</a>
+					(${principal.username})
+				</p>
+			</c:if>
+		</h3>
     </body>
 </html>
