@@ -11,11 +11,11 @@
 						http://www.springframework.org/schema/security/spring-security.xsd">
  
 <!-- 	<context:component-scan base-package="mk.sav.web" /> -->
-	<security:http     use-expressions="true">
+	<security:http access-denied-page="/denied.jsp"    use-expressions="true">
 	
 		<security:form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=true" />
-		<security:intercept-url pattern="/sav/add*" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/sav/list*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+		<security:intercept-url pattern="/sav/add*" access="hasRole('ROLE_EDITOR')" />
+		<security:intercept-url pattern="/sav/list*" access="hasAnyRole('ROLE_VIEWER','ROLE_EDITOR')" />
 <!-- 		<security:intercept-url pattern="/sav/add*" access="IS_AUTHENTICATED_FULLY" /> -->
 <!-- 		<security:intercept-url pattern="/sav/add*" access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
 
@@ -23,9 +23,8 @@
 	</security:http>
 	<security:authentication-manager>
 		<security:authentication-provider>
-<!-- 			<security:password-encoder hash="sha-256" > -->
+			<security:password-encoder hash="sha-256" />
 <!-- 				<security:salt-source system-wide="MySalt" /> -->
-<!-- 			</security:password-encoder> -->
 			<security:user-service properties="/users.properties" />
  		</security:authentication-provider>
 	</security:authentication-manager>

@@ -6,3 +6,11 @@ GRANT ALL PRIVILEGES ON DATABASE "postgres" to nizar;
 # Test database
 CREATE USER nizar_test WITH PASSWORD 'test_password';
 GRANT ALL PRIVILEGES ON DATABASE "postgres_test" to nizar_test;
+
+# run this project with an external tomcat 8.0.26
+# note that the default port was changed to 8088
+
+- add these lines to tomcat-users.xml
+    <role rolename="manager-gui"/>
+    <user username="tomcat" password="s3cret" roles="manager-gui,manager-script,manager-status,manager-jmx"/>
+- start the serveur
