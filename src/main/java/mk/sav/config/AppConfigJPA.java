@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-
+import javax.persistence.EntityManagerFactory;
 import mk.sav.internal.JpaTechnicianRepository;
 import mk.sav.internal.TechnicianRepository;
 
@@ -50,7 +50,7 @@ public class AppConfigJPA {
 	}
 	
 	@Bean
-	public PlatformTransactionManager transactionManager(javax.persistence.EntityManagerFactory emf){
+	public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
 		
 		return new JpaTransactionManager(emf);
 	}
