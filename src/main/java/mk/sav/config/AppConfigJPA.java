@@ -2,22 +2,26 @@ package mk.sav.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-import javax.persistence.EntityManagerFactory;
-import mk.sav.internal.JpaTechnicianRepository;
-import mk.sav.internal.TechnicianRepository;
+
+import mk.sav.internal.CustomerManager;
+import mk.sav.internal.JpaCustomerManager;
 
 @Configuration
-//@Profile("jpa")
+@ComponentScan("mk.sav.repo")
+@Profile("jpa")
 public class AppConfigJPA {
 
 	
@@ -43,16 +47,19 @@ public class AppConfigJPA {
 		return emfb;
 	}
 	
-	@Bean 
-	public TechnicianRepository technicianRepository(){
-		
-		return new JpaTechnicianRepository();
-	}
+
 	
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
 		
 		return new JpaTransactionManager(emf);
+	}
+	
+	@Bean
+	public CustomerManager customerManager(){
+		return new JpaCustomerManager();
+		
+		
 	}
 
 	

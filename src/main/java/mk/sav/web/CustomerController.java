@@ -1,8 +1,6 @@
 package mk.sav.web;
 
-import mk.sav.entity.Technician;
 import org.apache.log4j.Logger;
-import org.apache.log4j.lf5.util.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import mk.sav.entity.Customer;
 import mk.sav.entity.Customer.Frequency;
+import mk.sav.entity.Technician;
 import mk.sav.internal.CustomerManager;
 
 @Controller

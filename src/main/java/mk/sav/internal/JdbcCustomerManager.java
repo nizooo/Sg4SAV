@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import mk.sav.entity.Customer;
 import mk.sav.entity.Customer.Gender;
 
 @Component
+@Profile("jdbc")
 public class JdbcCustomerManager implements CustomerManager {
 
 
@@ -29,19 +31,7 @@ public class JdbcCustomerManager implements CustomerManager {
 
 	}
 
-	public String getCustomerName() {
 
-		String sql = "select NAME from T_CUSTOMER";
-		//return jdbcTemplate.queryForObject(sql ,String.class);
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
-		String signleName = null;
-		for (Map row : rows) {
-
-			signleName = (String) row.get("NAME");
-		}
-		return signleName;
-
-	}
 
 
 	public int addCustomer(Customer customer) {

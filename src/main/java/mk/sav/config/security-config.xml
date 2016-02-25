@@ -3,14 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:util="http://www.springframework.org/schema/util" 
 	xmlns:security="http://www.springframework.org/schema/security" 
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 						http://www.springframework.org/schema/beans/spring-beans.xsd 
 						http://www.springframework.org/schema/util 
 						http://www.springframework.org/schema/util/spring-util.xsd
 						http://www.springframework.org/schema/security
-						http://www.springframework.org/schema/security/spring-security.xsd">
+						http://www.springframework.org/schema/security/spring-security.xsd
+						http://www.springframework.org/schema/data/jpa
+    					http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
  
 <!-- 	<context:component-scan base-package="mk.sav.web" /> -->
+	<jpa:repositories base-package="mk.sav.repo" />
 	<security:http access-denied-page="/denied.jsp"    use-expressions="true">
 	
 		<security:form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=true" />
@@ -28,5 +32,6 @@
 			<security:user-service properties="/users.properties" />
  		</security:authentication-provider>
 	</security:authentication-manager>
+
 
 </beans>

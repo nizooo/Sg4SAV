@@ -9,7 +9,6 @@ import mk.sav.entity.Customer;
 @Component
 public interface CustomerManager {
 	
-	public String getCustomerName();
 
 	public int addCustomer(Customer customer);
 	

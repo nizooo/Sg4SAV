@@ -1,7 +1,21 @@
 package mk.sav.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="T_CUSTOMER")
 public class Customer {
 
+	
+	@Column(name="ID")
+	@GeneratedValue
+	@Id
+	private long id;
+	
 	private String name;
 	private String age;
 	private String address;
