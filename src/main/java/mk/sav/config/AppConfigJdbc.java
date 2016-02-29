@@ -8,9 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import mk.sav.internal.CustomerManager;
-import mk.sav.internal.JdbcCustomerManager;
-
 @Configuration
 @Profile("jdbc")
 public class AppConfigJdbc {
@@ -26,11 +23,11 @@ public class AppConfigJdbc {
 		
 	}
 
-	@Bean
-	public CustomerManager customerManager(){
-		return new JdbcCustomerManager(jdbcTemplate());
-		
-		
-	}
+//	@Bean
+//	public CustomerManager customerManager(){
+//		return new JdbcCustomerManager(jdbcTemplate());
+//		
+//		
+//	}
 	
 }

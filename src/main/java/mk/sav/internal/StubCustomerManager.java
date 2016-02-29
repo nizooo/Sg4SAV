@@ -11,9 +11,9 @@ public class StubCustomerManager implements CustomerManager {
 	}
 
 
-	public int addCustomer(Customer customer) {
+	public Customer addCustomer(Customer customer) {
 	
-		return 2;
+		return null;
 	}
 
 

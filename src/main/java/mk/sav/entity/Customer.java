@@ -2,6 +2,8 @@ package mk.sav.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,30 +22,36 @@ public class Customer {
 	private String age;
 	private String address;
 	private String email;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="FREQUENCY_NEWS")
 	private Frequency newsletterFrequency;
+	
+	@Enumerated(EnumType.STRING)
 	private Gender gender;
+	
+	
+	
+	@Column(name="RECEIVE_NEWSLETTER")
 	private Boolean receiveNewsletter;
 
+	public Customer(){}
 
 
+	public Customer(String name, String age, String address, String email, Frequency newsletterFrequency,
+			Gender gender, Boolean receiveNewsletter) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.email = email;
+		this.newsletterFrequency = newsletterFrequency;
+		this.gender = gender;
+		this.receiveNewsletter = receiveNewsletter;
+	}
 
-	public enum Gender {
-		MALE(0), FEMALE(1);
-		private int index;
-
-		private Gender(int index){
-			this.index = index;
-		}
-		public int getGenderIndex(){
-			return this.index;
-		}
-		public void setGenderIndex(int index){
-			this.index = index;			
-		}
-	} 
-
-
-
+	public enum Gender {MALE, FEMALE;} 
+	
 	public enum Frequency{HOURLY, DAILY, WEEKLY, MONTHLY, ANNUALLY}
 
 	public String getName() {

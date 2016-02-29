@@ -1,5 +1,6 @@
 package mk.sav.internal;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class JpaCustomerManager implements CustomerManager {
 
 
 	@Override
-	public int addCustomer(Customer customer) {
+	public Customer addCustomer(Customer customer) {
 		Customer cust = customerRepo.save(customer);
-		return (customer!=null)?1:0;
+		return cust;
 	
 	}
 
@@ -26,7 +27,7 @@ public class JpaCustomerManager implements CustomerManager {
 	public List<Customer> getListCustomers() {
 		
 		Iterator<Customer> it = customerRepo.findAll().iterator();
-		List<Customer> listC = null;
+		List<Customer> listC = new ArrayList<>();
 		while(it.hasNext()){
 			listC.add(it.next());
 		}

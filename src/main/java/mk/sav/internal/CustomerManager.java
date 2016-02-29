@@ -10,7 +10,7 @@ import mk.sav.entity.Customer;
 public interface CustomerManager {
 	
 
-	public int addCustomer(Customer customer);
+	public Customer addCustomer(Customer customer);
 	
 	public List<Customer> getListCustomers();
 
