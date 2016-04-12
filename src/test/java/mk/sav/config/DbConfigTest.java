@@ -36,17 +36,33 @@ public class DbConfigTest {
 //				.build();
 //	}
 	
+	 
+	 // dataSource postgresql 
+//	@Bean
+//	public DataSource dataSource(){
+//		
+//		BasicDataSource ds = new BasicDataSource();
+//		ds.setDriverClassName("org.postgresql.Driver");
+//		ds.setUrl("jdbc:postgresql://localhost/postgres_test");
+//		ds.setUsername("postgres");
+//		ds.setPassword("postgresql");
+//		return ds;
+//		
+//	}
+	
 	@Bean
 	public DataSource dataSource(){
 		
 		BasicDataSource ds = new BasicDataSource();
-		ds.setDriverClassName("org.postgresql.Driver");
-		ds.setUrl("jdbc:postgresql://localhost/postgres_test");
-		ds.setUsername("postgres");
-		ds.setPassword("postgresql");
+		ds.setDriverClassName("org.hsqldb.jdbcDriver");
+		ds.setUrl("jdbc:hsqldb:mem:.");
+		ds.setUsername("sa");
+		ds.setPassword("");
 		return ds;
 		
 	}
+	
+
 	
 	@Bean
 	public DataSourceInitializer dataSourceInitializer(final DataSource dataSource){

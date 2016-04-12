@@ -26,14 +26,27 @@ public class DbConfig {
 	 * test data for fast testing
 	 */
 	
+    // Datasource POSTGRES
+//	@Bean
+//	public DataSource dataSource(){
+//		
+//		BasicDataSource ds = new BasicDataSource();
+//		ds.setDriverClassName("org.postgresql.Driver");
+//		ds.setUrl("jdbc:postgresql://localhost/postgres");
+//		ds.setUsername("postgres");
+//		ds.setPassword("postgresql");
+//		return ds;
+//		
+//	}
+	
 	@Bean
 	public DataSource dataSource(){
 		
 		BasicDataSource ds = new BasicDataSource();
-		ds.setDriverClassName("org.postgresql.Driver");
-		ds.setUrl("jdbc:postgresql://localhost/postgres");
-		ds.setUsername("postgres");
-		ds.setPassword("postgresql");
+		ds.setDriverClassName("org.hsqldb.jdbcDriver");
+		ds.setUrl("jdbc:hsqldb:mem:.");
+		ds.setUsername("sa");
+		ds.setPassword("");
 		return ds;
 		
 	}

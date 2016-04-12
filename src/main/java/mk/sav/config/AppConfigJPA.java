@@ -34,7 +34,7 @@ public class AppConfigJPA {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setShowSql(true);
 		adapter.setGenerateDdl(true);
-		adapter.setDatabase(Database.POSTGRESQL);
+		adapter.setDatabase(Database.HSQL);
 		
 		Properties props= new Properties();
 		props.setProperty("hibernate.format_sql", "true");
